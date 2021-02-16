@@ -1,0 +1,125 @@
+{
+    "openapi": "3.0.0",
+    "servers": [
+        {
+            "url": "https://api.yourendpoint.com/v1/"
+        }
+    ],
+    "info": {
+        "description": "Template API server for CRUD operations",
+        "version": "1.0.0",
+        "title": "Node API Server Template",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "dev@company.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "tags": [
+        {
+            "name": "User",
+            "description": "All API calls related to the user object"
+        }
+    ],
+    "paths": {
+        "/user/{firstName}": {
+            "get": {
+                "tags": ["User"],
+                "summary": "Returns a list of users by the given name",
+                "description": "",
+                "operationId": "getUsersByName",
+                "parameters": [
+                    {
+                        "name": "firstName",
+                        "in": "path",
+                        "description": "The first name of the user that should be returned",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/new-user": {
+            "post": {
+                "tags": ["User"],
+                "summary": "Adds a new user to the server with the given information in the body",
+                "description": "",
+                "parameters": [],
+                "operationId": "createNewUser",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "format": "int32"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    },
+                    "description": "The user information that you want to add"
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "User": {
+                "type": "object",
+                "properties": {
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "age": {
+                        "type": "number",
+                        "format": "int32"
+                    }
+                }
+            }
+        },
+        "links": {},
+        "callbacks": {}
+    },
+    "security": []
+}
