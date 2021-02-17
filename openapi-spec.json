@@ -102,17 +102,114 @@
     },
     "components": {
         "schemas": {
-            "User": {
+            "Profile": {
                 "type": "object",
                 "properties": {
-                    "firstName": {
+                    "name": {
+                        "type": "string",
+                        "required": true
+                    },
+                    "discordId": {
                         "type": "string"
                     },
-                    "lastName": {
+                    "homePageUrl": {
                         "type": "string"
                     },
-                    "age": {
-                        "type": "number",
+                    "activeTimeStart": {
+                        "Type": "int",
+                        "format": "int32"
+                    },
+                    "activeTimeEnd": {
+                        "Type": "int",
+                        "format": "int32"
+                    },
+                    "activeWeekDay": {
+                        "Type": "string",
+                        "enum": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+                    },
+                    "mainGame": {
+                        "Type": "string"
+                    },
+                    "profileDescription": {
+                        "Type": "string"
+                    },
+                    "rank": {
+                        "Type": "string"
+                    },
+                    "createdAt": {
+                        "Type": "timestamp"
+                    }
+                }
+            },
+            "PersonalInfo": {
+                "type": "object",
+                "properties": {
+                    "userId": {
+                        "Type": "int",
+                        "format": "int32"
+                    },
+                    "requestFlag": {
+                        "Type": "boolean"
+                    },
+                    "userExp": {
+                        "Type": "int",
+                        "format": "int32"
+                    },
+                    "mainPostId": {
+                        "Type": "int",
+                        "format": "int32"
+                    },
+                    "twitterUuid": {
+                        "Type": "string"
+                    },
+                    "isBeta": {
+                        "Type": "boolean"
+                    },
+                    "isAdmin": {
+                        "Type": "boolean"
+                    },
+                    "email": {
+                        "Type": "string",
+                        "required": true
+                    }
+                }
+            },
+            "Post": {
+                "type": "object",
+                "properties": {
+                    "postContent": {
+                        "Type": "string"
+                    },
+                    "clipId": {
+                        "Type": "int",
+                        "format":"int32"
+                    },
+                    "image": {
+                        "Type": "string"
+                    },
+                    "creatorId": {
+                        "Type": "int",
+                        "format": "int32"
+                    }
+                }
+            },
+            "Clip": {
+                "type": "object",
+                "properties": {
+                    "source": {
+                        "Type": "string"
+                    }
+                }
+            },
+            "postLike": {
+                "type": "object",
+                "properties": {
+                    "postId": {
+                        "TyPe": "int",
+                        "format":"int32"
+                    },
+                    "personalInfoId": {
+                        "Type": "int",
                         "format": "int32"
                     }
                 }
