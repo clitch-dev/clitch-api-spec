@@ -116,28 +116,26 @@
                         "type": "string"
                     },
                     "activeTimeStart": {
-                        "Type": "int",
-                        "format": "int32"
+                        "type": "int"
                     },
                     "activeTimeEnd": {
-                        "Type": "int",
-                        "format": "int32"
+                        "type": "int"
                     },
                     "activeWeekDay": {
-                        "Type": "string",
+                        "type": "string",
                         "enum": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
                     },
                     "mainGame": {
-                        "Type": "string"
+                        "type": "string"
                     },
                     "profileDescription": {
-                        "Type": "string"
+                        "type": "string"
                     },
                     "rank": {
-                        "Type": "string"
+                        "type": "string"
                     },
                     "createdAt": {
-                        "Type": "timestamp"
+                        "type": "timestamp"
                     }
                 }
             },
@@ -145,31 +143,28 @@
                 "type": "object",
                 "properties": {
                     "userId": {
-                        "Type": "int",
-                        "format": "int32"
+                        "type": "int"
                     },
                     "requestFlag": {
-                        "Type": "boolean"
+                        "type": "boolean"
                     },
                     "userExp": {
-                        "Type": "int",
-                        "format": "int32"
+                        "type": "int"
                     },
                     "mainPostId": {
-                        "Type": "int",
-                        "format": "int32"
+                        "type": "int"
                     },
                     "twitterUuid": {
-                        "Type": "string"
+                        "type": "string"
                     },
                     "isBeta": {
-                        "Type": "boolean"
+                        "type": "boolean"
                     },
                     "isAdmin": {
-                        "Type": "boolean"
+                        "type": "boolean"
                     },
                     "email": {
-                        "Type": "string",
+                        "type": "string",
                         "required": true
                     }
                 }
@@ -178,18 +173,16 @@
                 "type": "object",
                 "properties": {
                     "postContent": {
-                        "Type": "string"
+                        "type": "string"
                     },
                     "clipId": {
-                        "Type": "int",
-                        "format":"int32"
+                        "type": "int"
                     },
                     "image": {
-                        "Type": "string"
+                        "type": "string"
                     },
                     "creatorId": {
-                        "Type": "int",
-                        "format": "int32"
+                        "type": "int"
                     }
                 }
             },
@@ -197,20 +190,18 @@
                 "type": "object",
                 "properties": {
                     "source": {
-                        "Type": "string"
+                        "type": "string"
                     }
                 }
             },
-            "postLike": {
+            "PostLike": {
                 "type": "object",
                 "properties": {
                     "postId": {
-                        "TyPe": "int",
-                        "format":"int32"
+                        "type": "int"
                     },
                     "personalInfoId": {
-                        "Type": "int",
-                        "format": "int32"
+                        "type": "int"
                     }
                 }
             }
