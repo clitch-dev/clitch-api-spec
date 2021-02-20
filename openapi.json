@@ -2,16 +2,16 @@
     "openapi": "3.0.0",
     "servers": [
         {
-            "url": "https://api.yourendpoint.com/v1/"
+            "url": "https://api.clitch.life/v1/"
         }
     ],
     "info": {
-        "description": "Template API server for CRUD operations",
+        "description": "Clitch API server",
         "version": "1.0.0",
-        "title": "Node API Server Template",
+        "title": "Clitch API server",
         "termsOfService": "http://swagger.io/terms/",
         "contact": {
-            "email": "dev@company.com"
+            "email": "dev@clitch.life"
         },
         "license": {
             "name": "Apache 2.0",
@@ -74,8 +74,7 @@
                                 "schema": {
                                     "properties": {
                                         "name": {
-                                            "type": "string",
-                                            "required": true
+                                            "type": "string"
                                         },
                                         "discordId": {
                                             "type": "string"
@@ -84,10 +83,10 @@
                                             "type": "string"
                                         },
                                         "activeTimeStart": {
-                                            "type": "int"
+                                            "type": "integer"
                                         },
                                         "activeTimeEnd": {
-                                            "type": "int"
+                                            "type": "integer"
                                         },
                                         "activeWeekDay": {
                                             "type": "string"
@@ -200,8 +199,7 @@
                         "type": "string"
                     },
                     "name": {
-                        "type": "string",
-                        "required": true
+                        "type": "string"
                     },
                     "discordId": {
                         "type": "string"
@@ -210,10 +208,10 @@
                         "type": "string"
                     },
                     "activeTimeStart": {
-                        "type": "int"
+                        "type": "integer"
                     },
                     "activeTimeEnd": {
-                        "type": "int"
+                        "type": "integer"
                     },
                     "activeWeekDay": {
                         "type": "string",
@@ -229,7 +227,7 @@
                         "type": "string"
                     },
                     "createdAt": {
-                        "type": "timestamp"
+                        "type": "string"
                     }
                 }
             },
@@ -246,10 +244,10 @@
                         "type": "boolean"
                     },
                     "userExp": {
-                        "type": "int"
+                        "type": "integer"
                     },
                     "mainPostId": {
-                        "type": "int"
+                        "type": "integer"
                     },
                     "twitterUuid": {
                         "type": "string"
@@ -261,8 +259,7 @@
                         "type": "boolean"
                     },
                     "email": {
-                        "type": "string",
-                        "required": true
+                        "type": "string"
                     }
                 }
             },
@@ -276,7 +273,7 @@
                         "type": "string"
                     },
                     "clipId": {
-                        "type": "int"
+                        "type": "integer"
                     },
                     "image": {
                         "type": "string"
@@ -304,10 +301,10 @@
                         "type": "string"
                     },
                     "postId": {
-                        "type": "int"
+                        "type": "integer"
                     },
                     "personalInfoId": {
-                        "type": "int"
+                        "type": "integer"
                     }
                 }
             }
