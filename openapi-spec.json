@@ -20,22 +20,22 @@
     },
     "tags": [
         {
-            "name": "User",
-            "description": "All API calls related to the user object"
+            "name": "Profile",
+            "description": "All API calls related to the profile object"
         }
     ],
     "paths": {
-        "/user/{firstName}": {
+        "/profile/{id}": {
             "get": {
-                "tags": ["User"],
-                "summary": "Returns a list of users by the given name",
+                "tags": ["Profile"],
+                "summary": "Returns a profile by id",
                 "description": "",
-                "operationId": "getUsersByName",
+                "operationId": "getProfile",
                 "parameters": [
                     {
-                        "name": "firstName",
+                        "name": "id",
                         "in": "path",
-                        "description": "The first name of the user that should be returned",
+                        "description": "The first data of the profile that should be returned",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -50,7 +50,7 @@
                                 "schema": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/components/schemas/User"
+                                        "$ref": "#/components/schemas/Profile"
                                     }
                                 }
                             }
@@ -59,13 +59,13 @@
                 }
             }
         },
-        "/user/new-user": {
+        "/profile/new": {
             "post": {
-                "tags": ["User"],
-                "summary": "Adds a new user to the server with the given information in the body",
+                "tags": ["Profile"],
+                "summary": "Adds a new profile to the server with the given information in the body",
                 "description": "",
                 "parameters": [],
-                "operationId": "createNewUser",
+                "operationId": "createNewProfile",
                 "responses": {
                     "200": {
                         "description": "successful operation",
@@ -73,11 +73,29 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "status": {
-                                            "type": "number",
-                                            "format": "int32"
+                                        "name": {
+                                            "type": "string",
+                                            "required": true
                                         },
-                                        "message": {
+                                        "discordId": {
+                                            "type": "string"
+                                        },
+                                        "homePageUrl": {
+                                            "type": "string"
+                                        },
+                                        "activeTimeStart": {
+                                            "type": "int"
+                                        },
+                                        "activeTimeEnd": {
+                                            "type": "int"
+                                        },
+                                        "activeWeekDay": {
+                                            "type": "string"
+                                        },
+                                        "mainGame": {
+                                            "type": "string"
+                                        },
+                                        "profileDescription": {
                                             "type": "string"
                                         }
                                     }
@@ -91,29 +109,205 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/User"
+                                "$ref": "#/components/schemas/Profile"
                             }
                         }
                     },
-                    "description": "The user information that you want to add"
+                    "description": "The profile information that you want to add"
+                }
+            }
+        },
+        "/post/{id}": {
+            "get": {
+                "tags": ["Post"],
+                "summary": "Returns a post by id",
+                "description": "",
+                "operationId": "getPost",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The first data of the post that should be returned",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Post"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/post/new": {
+            "post": {
+                "tags": ["Post"],
+                "summary": "Adds a new post to the server with the given information in the body",
+                "description": "",
+                "parameters": [],
+                "operationId": "createNewPost",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "postContent": {
+                                            "type": "string"
+                                        },
+                                        "image": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Post"
+                            }
+                        }
+                    },
+                    "description": "The post information that you want to add"
                 }
             }
         }
     },
     "components": {
         "schemas": {
-            "User": {
+            "Profile": {
                 "type": "object",
                 "properties": {
-                    "firstName": {
+                    "id": {
                         "type": "string"
                     },
-                    "lastName": {
+                    "name": {
+                        "type": "string",
+                        "required": true
+                    },
+                    "discordId": {
                         "type": "string"
                     },
-                    "age": {
-                        "type": "number",
-                        "format": "int32"
+                    "homePageUrl": {
+                        "type": "string"
+                    },
+                    "activeTimeStart": {
+                        "type": "int"
+                    },
+                    "activeTimeEnd": {
+                        "type": "int"
+                    },
+                    "activeWeekDay": {
+                        "type": "string",
+                        "enum": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+                    },
+                    "mainGame": {
+                        "type": "string"
+                    },
+                    "profileDescription": {
+                        "type": "string"
+                    },
+                    "rank": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "timestamp"
+                    }
+                }
+            },
+            "PersonalInfo": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "profileId": {
+                        "type": "string"
+                    },
+                    "requestFlag": {
+                        "type": "boolean"
+                    },
+                    "userExp": {
+                        "type": "int"
+                    },
+                    "mainPostId": {
+                        "type": "int"
+                    },
+                    "twitterUuid": {
+                        "type": "string"
+                    },
+                    "isBeta": {
+                        "type": "boolean"
+                    },
+                    "isAdmin": {
+                        "type": "boolean"
+                    },
+                    "email": {
+                        "type": "string",
+                        "required": true
+                    }
+                }
+            },
+            "Post": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "postContent": {
+                        "type": "string"
+                    },
+                    "clipId": {
+                        "type": "int"
+                    },
+                    "image": {
+                        "type": "string"
+                    },
+                    "creatorId": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Clip": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "source": {
+                        "type": "string"
+                    }
+                }
+            },
+            "PostLike": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "postId": {
+                        "type": "int"
+                    },
+                    "personalInfoId": {
+                        "type": "int"
                     }
                 }
             }
