@@ -116,6 +116,79 @@
                     "description": "The profile information that you want to add"
                 }
             }
+        },
+        "/post/{id}": {
+            "get": {
+                "tags": ["Post"],
+                "summary": "Returns a post by id",
+                "description": "",
+                "operationId": "getPost",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The first data of the post that should be returned",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Post"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/post/new": {
+            "post": {
+                "tags": ["Post"],
+                "summary": "Adds a new post to the server with the given information in the body",
+                "description": "",
+                "parameters": [],
+                "operationId": "createNewPost",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "postContent": {
+                                            "type": "string"
+                                        },
+                                        "image": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Post"
+                            }
+                        }
+                    },
+                    "description": "The post information that you want to add"
+                }
+            }
         }
     },
     "components": {
@@ -163,8 +236,11 @@
             "PersonalInfo": {
                 "type": "object",
                 "properties": {
-                    "userId": {
-                        "type": "int"
+                    "id": {
+                        "type": "string"
+                    },
+                    "profileId": {
+                        "type": "string"
                     },
                     "requestFlag": {
                         "type": "boolean"
@@ -193,6 +269,9 @@
             "Post": {
                 "type": "object",
                 "properties": {
+                    "id": {
+                        "type": "string"
+                    },
                     "postContent": {
                         "type": "string"
                     },
@@ -203,13 +282,16 @@
                         "type": "string"
                     },
                     "creatorId": {
-                        "type": "int"
+                        "type": "string"
                     }
                 }
             },
             "Clip": {
                 "type": "object",
                 "properties": {
+                    "id": {
+                        "type": "string"
+                    },
                     "source": {
                         "type": "string"
                     }
@@ -218,6 +300,9 @@
             "PostLike": {
                 "type": "object",
                 "properties": {
+                    "id": {
+                        "type": "string"
+                    },
                     "postId": {
                         "type": "int"
                     },
